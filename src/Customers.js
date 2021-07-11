@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import Panel from 'react-bootstrap/lib/Panel'
 import Button from 'react-bootstrap/lib/Button'
 import CustomerDetails from './CustomerDetails'
+import Home from './Components/Home'
 import axios from 'axios'
-
+import { Link } from 'react-router-dom'
 export default class Customers extends Component {
 
   constructor(props) {
@@ -12,7 +13,11 @@ export default class Customers extends Component {
       selectedCustomer: 1
     }
   }
+ handleClick(e) {
+    e.preventDefault();
 
+    this.transitionTo('/home');
+  }
   //function which is called the first time the component loads
   componentDidMount() {
     this.getCustomerData();
@@ -29,6 +34,9 @@ export default class Customers extends Component {
     if (!this.state.customerList)
       return (<p>Loading data</p>)
     return (<div className="addmargin">
+    <div>
+         <Link to='/home'>Click Me</Link>
+      </div>
       <div className="col-md-3">
         {
 
